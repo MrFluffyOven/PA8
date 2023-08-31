@@ -1,0 +1,23 @@
+# logical
+/system         ext4              flags=display="System"              wait,logical,first_stage_mount
+/system_ext     ext4              flags=display="System_Ext"          wait,logical,first_stage_mount
+/vendor         ext4              flags=display="Vendor"              wait,logical,first_stage_mount
+/product        ext4              flags=display="Product"             wait,logical,first_stage_mount
+
+# Syslinked
+/system_image   emmc           /dev/block/dm-0              flags=wipingui;flashimg=1;backup=1;display="System Image"
+/system_ext     emmc         /dev/block/dm-1              flags=display="System_Ext"
+/vendor_image   emmc          /dev/block/dm-2              flags=wipingui;flashimg=1;backup=1;display="Vendor Image"
+/product_image  emmc            /dev/block/dm-3              flags=wipingui;flashimg=1;backup=1;display="Product Image"
+
+
+/boot                emmc      /dev/block/by-name/boot              flags=display=boot
+/recovery            emmc      /dev/block/by-name/recovery          flags=display=recovery
+/metadata            ext4      /dev/block/by-name/metadata          flags=display=metadata
+/cache               ext4      /dev/block/by-name/cache             flags=display=cache
+/data                f2fs      /dev/block/by-name/userdata          flags=display=data
+/prism               ext4      /dev/block/by-name/prism             flags=display=prism
+/optics              ext4      /dev/block/by-name/optics            flags=display=optics
+
+/external_sd              sdfat     /dev/block/mmcblk1p1                 flags=display=sdcard
+/usb_otg
