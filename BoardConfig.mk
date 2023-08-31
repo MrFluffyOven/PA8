@@ -52,7 +52,7 @@ TARGET_KERNEL_CONFIG := gta8wifi_eur_open_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/gta8wifi
 
 # Kernel - prebuilt
-TARGET_FORCE_PREBUILT_KERNEL := true
+TARGET_FORCE_PREBUILT_KERNEL := false
 ifeq ($(TARGET_FORCE_PREBUILT_KERNEL),true)
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb.img
