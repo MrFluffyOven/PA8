@@ -1,23 +1,25 @@
-# logical
-/system         ext4              flags=display="System"              wait,logical,first_stage_mount
-/system_ext     ext4              flags=display="System_Ext"          wait,logical,first_stage_mount
-/vendor         ext4              flags=display="Vendor"              wait,logical,first_stage_mount
-/product        ext4              flags=display="Product"             wait,logical,first_stage_mount
+# mount point	             fstype		   device			device2				flags
+# Logical partitions
+system		  /system		      ext4						                   	wait,logical,first_stage_mount
+system_ext  /system_ext     ext4                                wait,logical,first_stage_mount
+vendor		  /vendor		      ext4							                  wait,logical,first_stage_mount
+product		  /product	      ext4							                  wait,logical,first_stage_mount
 
-# Syslinked
-/system_image   emmc           /dev/block/dm-0              flags=wipingui;flashimg=1;backup=1;display="System Image"
-/system_ext     emmc         /dev/block/dm-1              flags=display="System_Ext"
-/vendor_image   emmc          /dev/block/dm-2              flags=wipingui;flashimg=1;backup=1;display="Vendor Image"
-/product_image  emmc            /dev/block/dm-3              flags=wipingui;flashimg=1;backup=1;display="Product Image"
+# Symlinked partitions
+/system_image	    emmc	  /dev/block/dm-0				      flags=backup=1;wipingui;flashimg=1;display="System Image"
+/system_ext       emmc    /dev/block/dm-1             flags=display="System_Ext"
+/vendor_image 	  emmc		/dev/block/dm-2				      flags=backup=1;wipingui;flashimg=1;display="Vendor Image"
+/product_image	  emmc		/dev/block/dm-3					    flags=backup=1;wipingui;flashimg=1;display="Product Image"
 
 
-/boot                emmc      /dev/block/by-name/boot              flags=display="Boot";flashimg=1;backup=1
-/recovery            emmc      /dev/block/by-name/recovery          flags=display="Recovery";flashimg=1;backup=1
-/metadata            ext4      /dev/block/by-name/metadata          flags=display="Metadata";backup=1
-/cache               ext4      /dev/block/by-name/cache             flags=display="Cache";backup=1
-/data                f2fs      /dev/block/by-name/userdata          flags=display="Data";backup=1;wipingui
-/prism               ext4      /dev/block/by-name/prism             flags=display="Prism";flashimg=1
-/optics              ext4      /dev/block/by-name/optics            flags=display="Optics"
+# Physical partitions
+/boot          emmc        /dev/block/by-name/boot                       flags=backup=1;display="Boot";flashimg=1
+/recovery      emmc        /dev/block/by-name/recovery                   flags=backup=1;wipingui;display="Recovery";flashimg=1
+/misc          emmc        /dev/block/by-name/misc
+/cache         ext4        /dev/block/by-name/cache                      flags=backup=1;wipingui;display="Cache"
+/metadata      ext4        /dev/block/by-name/metadata                   flags=backup=1;wipingui;display="Metadata"
+/data          f2fs        /dev/block/by-name/userdata                   flags=backup=1;wipingui;display="Data"
 
-/external_sd              sdfat     /dev/block/mmcblk1p1                 flags=display=sdcard
-/usb_otg
+# Removable storage
+/external_sd   auto        /dev/block/mmcblk1p1    /dev/block/mmcblk1    flags=display="Micro SD card";storage;wipeingui;removable
+/usb-otg       auto        /dev/block/sda1         /dev/block/sda        flags=display="USB-OTG";storage;wipeingui;removable
