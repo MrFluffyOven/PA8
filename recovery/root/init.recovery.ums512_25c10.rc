@@ -2,3 +2,4 @@
 import /init.recovery.common.rc
 import /init.recovery.${ro.hardware}.rc
 import /init.recovery.samsung.rc
+import /init.recovery.usb.rc
