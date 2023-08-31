@@ -11,13 +11,13 @@
 /product_image  emmc            /dev/block/dm-3              flags=wipingui;flashimg=1;backup=1;display="Product Image"
 
 
-/boot                emmc      /dev/block/by-name/boot              flags=display=boot
-/recovery            emmc      /dev/block/by-name/recovery          flags=display=recovery
-/metadata            ext4      /dev/block/by-name/metadata          flags=display=metadata
-/cache               ext4      /dev/block/by-name/cache             flags=display=cache
-/data                f2fs      /dev/block/by-name/userdata          flags=display=data
-/prism               ext4      /dev/block/by-name/prism             flags=display=prism
-/optics              ext4      /dev/block/by-name/optics            flags=display=optics
+/boot                emmc      /dev/block/by-name/boot              flags=display="Boot";flashimg=1;backup=1
+/recovery            emmc      /dev/block/by-name/recovery          flags=display="Recovery";flashimg=1;backup=1
+/metadata            ext4      /dev/block/by-name/metadata          flags=display="Metadata";backup=1
+/cache               ext4      /dev/block/by-name/cache             flags=display="Cache";backup=1
+/data                f2fs      /dev/block/by-name/userdata          flags=display="Data";backup=1;wipingui
+/prism               ext4      /dev/block/by-name/prism             flags=display="Prism";flashimg=1
+/optics              ext4      /dev/block/by-name/optics            flags=display="Optics"
 
 /external_sd              sdfat     /dev/block/mmcblk1p1                 flags=display=sdcard
 /usb_otg

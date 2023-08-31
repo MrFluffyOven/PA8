@@ -1,2 +1,4 @@
 #add for board init.rc for recovery mode
 import /init.recovery.common.rc
+import /init.recovery.${ro.hardware}.rc
+import /init.recovery.samsung.rc
