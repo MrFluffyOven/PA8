@@ -119,7 +119,7 @@ on fs
     mkdir /dev/usb-ffs/fastboot 0770 system system
     mount functionfs fastboot /dev/usb-ffs/fastboot rmode=0770,fmode=0660,uid=1000,gid=1000
 
-on property:sys.usb.config=adb
+on property:sys.usb.config=adb,mtp
     start adbd
 
 on property:sys.usb.config=fastboot
