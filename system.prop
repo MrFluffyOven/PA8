@@ -10,4 +10,5 @@ ro.adb.secure=0
 security.perf_harden=0
 ro.secure=0
 
+persist.sys.usb.config=adb,mtp
 sys.usb.controller=musb-hdrc.0.auto

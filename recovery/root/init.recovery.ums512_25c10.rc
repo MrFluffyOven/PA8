@@ -1,2 +1,8 @@
 #add for board init.rc for recovery mode
 import /init.recovery.common.rc
+
+on init
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export EXTERNAL_STORAGE /sdcard
+    export ANDROID_ROOT /system_root
