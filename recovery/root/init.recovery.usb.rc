@@ -6,6 +6,12 @@ on early-init
     copy /system/etc/ld.config.txt /linkerconfig/ld.config.txt
     chmod 444 /linkerconfig/ld.config.txt
 
+on init
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+    export EXTERNAL_STORAGE /external_sd
+    export ANDROID_ROOT /system_root
+
     start ueventd
 
     setprop sys.usb.configfs 1
