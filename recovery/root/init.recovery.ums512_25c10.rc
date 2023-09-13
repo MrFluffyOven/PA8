@@ -4,5 +4,5 @@ import /init.recovery.common.rc
 on init
     export ANDROID_ROOT /system
     export ANDROID_DATA /data
-    export EXTERNAL_STORAGE /sdcard
+    export EXTERNAL_STORAGE /external_sd
     export ANDROID_ROOT /system_root
