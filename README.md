@@ -2,46 +2,39 @@
  This device tree is still being worked on, things might change.
 ## Recovery Device Tree for the Samsung Galaxy Tab A8 Wifi
 
+## Getting Started ##
+To get started with AOSP sources to build TWRP, you'll need to get familiar
+with [Git and Repo](https://source.android.com/source/using-repo.html).
+
+
 ## How-to compile it:
 
 # Create dirs
-$ mkdir tw; cd tw
+    $ mkdir tw; cd tw
 
 # Pre init
-$ mkdir -p ~/.bin
+    $ mkdir -p ~/.bin
 
-PATH="${HOME}/.bin:${PATH}"
+    PATH="${HOME}/.bin:${PATH}"
 
-curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
+    curl https://storage.googleapis.com/git-repo-downloads/repo > ~/.bin/repo
 
-chmod a+rx ~/.bin/repo
+    chmod a+rx ~/.bin/repo
 
 # Init repo
-$ repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
+    $ repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
 
 # Sync
-$ repo sync
+    $ repo sync
 
 # Clone gta8wifi repo
-$ git clone https://github.com/MrFluffyOven/PA8.git -b twrp-12.1 device/samsung/gta8wifi
-
-# Clone gta8wifi kernel
-$ git clone https://github.com/MrFluffyOven/android_device_samsung_kernel_x200.git -b twrp-12.1
-kernel/samsung/gta8wifi
-
-# Make yourself owner of the kernel
-$ sudo chown -R (your linux username) kernel
-
-# Make the Kernel rwx
-$ chmod 777 -R kernel
-# Unzip 7z File
-Locate the 7z file in the tw file in tw/kernel/samsung/gta8wifi/tools/lib64, and "Extract Here"
+    $ git clone https://gitlab.com/MrFluffyOven/PA8.git -b twrp-12.1-no-avb-no-kernel device/samsung/gta8wifi
 
 # Build
-$ . build/envsetup.sh; export ALLOW_MISSING_DEPENDENCIES=true; lunch twrp_gta8wifi-eng; mka recoveryimage
+    $ . build/envsetup.sh; export ALLOW_MISSING_DEPENDENCIES=true; lunch twrp_gta8wifi-eng; mka recoveryimage
 
 # Disable File Based Encryption (FBE) after installing TWRP.
-$ Boot TWRP; format DATA partition; start TWRP SHELL; execute: multidisabler.
+    $ Boot TWRP; format DATA partition; start TWRP SHELL; execute: multidisabler.
 Your DATA partition will be secured against re-encryption.
 
 
