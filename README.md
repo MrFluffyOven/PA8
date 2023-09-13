@@ -36,8 +36,3 @@ with [Git and Repo](https://source.android.com/source/using-repo.html).
 # Disable File Based Encryption (FBE) after installing TWRP.
     $ Boot TWRP; format DATA partition; start TWRP SHELL; execute: multidisabler.
 Your DATA partition will be secured against re-encryption.
-
-
-Blobs version:
-> Kernel base: Compiled from source.
-> Ramdisk, DTB, DTBO base: X200XXS3CWG2
