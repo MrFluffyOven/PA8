@@ -1,8 +1,3 @@
-system					/system		ext4	ro				wait,logical,first_stage_mount
-system					/system		f2fs	ro				wait,logical,first_stage_mount
-vendor					/vendor		ext4	ro				wait,logical,first_stage_mount
-product					/product	ext4	ro				wait,logical,first_stage_mount
-
 /dev/block/mmcblk0boot0                                                        /spl                emmc    defaults    defaults
 /dev/block/mmcblk0boot1                                                        /spl_bk             emmc    defaults    defaults
 /dev/block/by-name/uboot                 /uboot              emmc    defaults    defaults
@@ -33,13 +28,20 @@ product					/product	ext4	ro				wait,logical,first_stage_mount
 /dev/block/by-name/logo                  /logo               emmc    defaults    defaults
 /dev/block/by-name/fbootlogo             /fbootlogo          emmc    defaults    defaults
 
-/dev/block/by-name/socko                 /socko              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check
-
+system /system ext4 ro,barrier=1 wait,avb=vbmeta_system,logical,first_stage_mount
+system_ext /system_ext ext4 ro,barrier=1 wait,avb=vbmeta_system_ext,logical,first_stage_mount
+vendor /vendor ext4 ro,barrier=1 wait,avb=vbmeta_vendor,logical,first_stage_mount
+product /product ext4 ro,barrier=1 wait,avb=vbmeta,logical,first_stage_mount
 /dev/block/by-name/metadata /metadata    ext4 nodev,noatime,nosuid,errors=panic wait,formattable,first_stage_mount,check
+
+/dev/block/by-name/socko                 /socko              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check
+/dev/block/by-name/odmko                 /odmko              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check
+
 /dev/block/by-name/cache                 /cache              ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc    wait,check
 /dev/block/by-name/prodnv                /mnt/vendor         ext4    noatime,nosuid,nodev,nomblk_io_submit,noauto_da_alloc     wait,check
 
-/dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678      wait,encryptable=footer	recoveryonly
+/dev/block/by-name/userdata	/data	f2fs	noatime,nosuid,nodev,discard,usrquota,grpquota,fsync_mode=nobarrier,reserve_root=32768,resgid=5678	recoveryonly
+/dev/block/mmcblk1p1                     /sdcard             sdfat    defaults    defaults
 /dev/block/by-name/sec_efs               /efs                ext4    defaults    recoveryonly
 /dev/block/by-name/sec_efs               /sec_efs            ext4    defaults    recoveryonly
 
